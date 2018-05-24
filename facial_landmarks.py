@@ -6,6 +6,13 @@ import dlib
 
 
 
+try:
+    from FeatureGen import*
+except ImportError:
+    print " FeatureGen.pyc file is not in the current directory"
+
+
+
 #EXTRA HELPERS Defined:
 
 #rectangle to bounding box function for face 
@@ -82,7 +89,16 @@ for (i,rect) in enumerate(rects):
 
 # show the output image with the face detections + facial landmarks
 cv2.imshow("Output", image)
+
+
+
+print "Generating features......"
+features=generateFeatures(image,shape)
+cv2.imshow("features",features)
 cv2.waitKey(0)
+
+
+
 
 
 
