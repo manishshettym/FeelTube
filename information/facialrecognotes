@@ -1,0 +1,31 @@
+FACIAL LANDMARKS for detection of exrpessions:
+
+The first step in this process will be detecting a face and extracting facial landmarks using dlib and opencv with python.
+
+Now Facial Landmarks is a portioon of " Shape-Predictor".
+Given an imput image , the predictor attempts to localize key points of interest along the shape.
+
+THAT here is : facial structures
+#step1 : localize the face in the full image
+#step2 : detect the key features
+
+There are a variety of facial landmark detectors, but all methods essentially try to localize and label the following facial regions:
+
+Mouth
+Right eyebrow
+Left eyebrow
+Right eye
+Left eye
+Nose
+Jaw
+
+The one in the dlib  library works like this .. This method starts by using:
+
+1.A training set of labeled facial landmarks on an image. These images are manually labeled, specifying specific (x, y)-coordinates of regions surrounding each facial structure.
+
+2.Priors, of more specifically, the probability on distance between pairs of input pixels.
+
+The pre-trained facial landmark detector inside the dlib library is used to estimate the location of 68 (x, y)-coordinates that map to facial structures on the face.
+
+
+
