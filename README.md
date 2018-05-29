@@ -20,7 +20,8 @@ After which the program will show you a set of 5 images that are chosen at rando
 Closing that shows us the histogram plotted using LPB:
 ![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/hist.png)
 
-
+*
+*
 
 Closing that gives us the output with red text representing wrong prediction and green being right:
 ![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/op1.png)
