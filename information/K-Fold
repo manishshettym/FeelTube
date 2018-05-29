@@ -1,0 +1,20 @@
+K-Folds dataset splitting
+
+Provides train/test indices to split data in train/test sets. Split dataset into k consecutive folds (without shuffling by default).
+
+Each fold is then used once as a validation while the k - 1 remaining folds form the training set.
+
+That is every fold gets to be a test as well as training set on the whole.
+
+SKLEARN andd Python:
+
+
+KFold(n_splits=3, shuffle=False, random_state=None)
+
+n_splits = no of folds
+shuffle = where to shuffle the dataset
+
+methods:
+
+.split(X) -> generates indices to split the dataset into training and test
+

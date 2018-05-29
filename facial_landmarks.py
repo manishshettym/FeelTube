@@ -6,6 +6,7 @@ import dlib
 
 
 
+
 try:
     from FeatureGen import*
 except ImportError:
@@ -82,9 +83,42 @@ for (i,rect) in enumerate(rects):
 	cv2.putText(image,"Face #{}".format(i+1), (x - 10, y - 10),
 		cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
+	
+	landmarks=[]
 	#drawing the facial landmarks over the image 
 	for (x, y) in shape:
 		cv2.circle(image, (x, y), 1, (0, 0, 255), -1)
+		landmarks.append((x,y))
+
+
+	xlist = []
+    ylist = []
+    for i in range(1,68): #Store X and Y for normalizing
+        xlist.append(float(shape.part(i).x))
+        ylist.append(float(shape.part(i).y))
+
+
+    #Find both coordinates of centre of gravity
+    xmean = np.mean(xlist)
+    ymean = np.mean(ylist)
+
+    #Calculate distance centre <-> other points
+    xcentral = [(x-xmean) for x in xlist] 
+    ycentral = [(y-ymean) for y in ylist]
+
+    landmarks_vectorform =[]
+
+    for x,y,w,z in zip(xcentral,ycentral,xlist,ylist):
+    	landmarks_vectorform.append(w)
+    	landmarks_vectorform.append(z)
+    	meannp = np.asarray((ymean,xmean))
+    	coornp = np.assarray((z,w))
+    	dist = np.linalg.norm(coornp-meannp)
+    	landmarks_vectorised.append(dist)
+    	landmarks_vectorised.append((math.atan2(y, x)*360)/(2*math.pi))
+
+
+
 
 
 # show the output image with the face detections + facial landmarks
@@ -92,10 +126,14 @@ cv2.imshow("Output", image)
 
 
 
-print "Generating features......"
+cv2.waitKey(0)
+
+'''print "Generating features......"
 features=generateFeatures(image,shape)
 cv2.imshow("features",features)
-cv2.waitKey(0)
+cv2.waitKey(0)'''
+
+
 
 
 

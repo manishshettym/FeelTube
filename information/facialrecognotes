@@ -44,4 +44,59 @@ and another copy for the output
 Now from a hardcoded dictionary for the features pick up the required coordinates and slice the shape array object
 
 
+PART3: Part 2 may or may not come useful depending on the usage of the features derived and dataset available for training
+
+So we slightly change our focus to training the ML program.
+
+The expression of a face might occur at the top left corner in a frame or at the bottom.
+However the relationship between the coordinates will be similar..
+
+SO we NORMALIZE the coordinates:
+ie:
+
+xnorm = [(i-min(xlist))/(max(xlist)-min(xlist)) for i in xlist]
+
+ynorm = [(i-min(ylist))/(max(ylist)-min(ylist)) for i in ylist]
+
+
+But this destoys a lot of variation by reducing the axis of hte rectanglel created to just 0->1.
+
+**** So a better way would be finding positons relative to eachother. But for that we need some kind og ORIGIN on the plane 
+
+hmm .. Origin here being the MEAN of the points.
+We could just choose the tip of the nose.
+
+
+*** One last pre processing to do is to correct the tilt in the face. 
+We can correct for this rotation by assuming that the bridge of the nose in most people is more or less straight, and offset all calculated angles by the angle of the nose bridge.
+
+
+1 So first find the xmean and ymean
+2 Find dist from xmean and ymean separately => Will result in slope as:
+
+	theta = math.atan2(y, x)*360)/(2*math.pi)
+
+
+So the final list after this PART is going to be a list of vectorized landmark points of the form :
+
+**** [x1,y1,distfromcenter,theta,x2,y2,.....] ****
+
+
+PART4: Training the datasets for emotions 
+
+
+# Here we load the images, and based on the name of the file we identify the class, in this case is a number from 1 to 7 that we can find in the 3 and 4th character of the filename.
+
+NOTE : #fixing the size of all images so that accuracy is improved
+
+
+#Using the Local Binary Pattern (LBP) recognizing features and plotting histograms for 5 random pictures chosen
+
+# Now we will try to predict the emotions represented in five random images training a simple classifier with the rest. The classifier that we will use is the K-Nearest Neighbor (KNN).
+
+1) In this step we divide the dataset in training and testing images. This can be performed in many ways, the simplest one is K-Fold.
+# Here we divide the images in ~30 groups (i.e, 5 images per group), this means that we train with ~140 images and test the results with the remaining 5 images. -> MIGHT GIVE POOR RESULTS
+
+GENERAL : use 70% of data for training and 30 for testing
+
 

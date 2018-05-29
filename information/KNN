@@ -1,0 +1,43 @@
+K Nearest Neighbours :
+
+An object is classified by a majority vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
+
+That is basically it
+
+But the algo used under that to choose the neighbours is what makes the time complexity better
+
+1) BRUTE FORCE :
+
+eg: 2d plot
+
+brute force is to find distance of all points from point of interest and choose the class with majority points. 
+
+TC: O[N^2 * D] for D dimensions
+
+2)K-D tree
+
+The basic idea is that if point A is very distant from point B, and point B is very close to point C, then we know that points A and C are very distant, without having to explicitly calculate their distance. (This may not be correct all the time but that is the idea ..
+) 
+
+How? By encoding aggregate distance info of sample
+
+ TC: O[D N *log(N)]
+
+
+this is the approach by the sklearn module by default
+
+3) Ball Tree .. hmm later maybe 
+
+
+SKLEARN and python :
+
+from sklearn.neighbors import KNeighborsClassifier
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(features_matrix, labels)
+predicted_values = neigh.predict(test_matrix)
+
+
+n_neighbours = no of neighbours to consider
+
+algorithm is by default auto -> and k-d tree
+
