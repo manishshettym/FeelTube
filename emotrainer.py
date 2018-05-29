@@ -116,3 +116,31 @@ class_prediction = knn.predict(X_test) #predict for testmatrix
 
 print('Predicted Classes:', class_prediction, '\n')
 print('Real Classes:', d[test_indices], '\n') 
+
+# These results are best represented with their respective images and their
+# predicted labels:
+
+plt.figure(figsize=fs)
+
+for i,im in enumerate(imgs[index]):
+    plt.subplot(1, 5, i+1)
+    plt.imshow(im, cmap='gray')
+    plt.xticks(())
+    plt.yticks(())
+    
+    emotions = np.array(['Neutral', 'Happy', 'Sad', 'Surprise', 'Disgust',
+                         'Anger' , 'Fear'])
+    title = str(emotions[class_prediction[i]-1]) #-1 because the classsifiers started from 1 - 7
+    
+    if title == str(emotions[d[test_indices][i]-1]):
+        plt.title(title, color='green')
+    else:
+        plt.title(title, color='red')
+plt.show()
+
+# Finally we can make some cross validations to get a better feeling of how our
+# classification is performing:
+
+knn = KNN(n_neighbors=1)
+score_knn = cross_val_score(knn, X, d, cv=10)
+print('KNN MEAN PERFORMANCE: ',str(np.mean(score_knn)*100)[:5] + '%')
