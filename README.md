@@ -13,7 +13,7 @@ python emotrainer.py
 ```
 
 After which the program will show you a set of 5 images that are chosen at random as test images:
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/ManishShettyM/FeelTube/images/ip.png)
 
 Closing that shows us the histogram plotted using LPB:
 ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
