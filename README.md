@@ -13,16 +13,19 @@ python emotrainer.py
 ```
 
 After which the program will show you a set of 5 images that are chosen at random as test images:
-![alt text](https://github.com/ManishShettyM/FeelTube/images/ip.png)
+![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/ip.png)
 
 Closing that shows us the histogram plotted using LPB:
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/hist.png)
 
 Closing that gives us the output with red text representing wrong prediction and green being right:
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/op.png)
 
 The terminal has information about the mean accuracy:
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/terminal.png)
+
+Sometimes output will have errors :
+![alt text](https://github.com/ManishShettyM/FeelTube/blob/master/images/test2.png)
 
 
 
