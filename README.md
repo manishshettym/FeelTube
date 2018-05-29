@@ -1,4 +1,4 @@
-# EmoVie
+# FeelTube
 A simple app that takes input as an emotion and picks up the right movies for the user
 
 ### Running the project
